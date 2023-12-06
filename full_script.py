@@ -11,8 +11,7 @@ import re
 
 folder_count = 25
 
-# Load JSON data from a file
-with open('config.json', 'r') as file:
+with open('creds.json', 'r') as file:
     data = json.load(file)
 
 consumer_key = data["consumer_key"]
@@ -27,7 +26,7 @@ database = data["database"]
 
 # Define the company CIK codes
 companies = {
-   "Monster Beverage Corp": 865752
+   "T-Mobile US, Inc.": 1283699
 
 }
 
@@ -148,12 +147,22 @@ def format_string(s):
     def format_number(match):
         # Use Python's string formatting to add commas to numbers
         return f"{int(match.group()):,}"
+
+    # Function to convert subsequent uppercase letters to lowercase
+    def lowercase_except_first(match):
+        word = match.group()
+        if len(word) > 1:
+            return word[0] + word[1:].lower()
+        else:
+            return word
+
     # Replace numbers with formatted numbers
     formatted_s = re.sub(r'\d+', format_number, s)
-    # Convert to lowercase
-    formatted_s = formatted_s.lower()
-    return formatted_s
 
+    # Convert only subsequent uppercase letters of each word to lowercase
+    formatted_s = re.sub(r'\b\w+\b', lowercase_except_first, formatted_s)
+
+    return formatted_s
 def send_tweet(data):
     client = tweepy.Client(
             consumer_key = consumer_key, consumer_secret=consumer_secret,
