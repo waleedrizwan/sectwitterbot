@@ -26,7 +26,47 @@ database = data["database"]
 
 # Define the company CIK codes
 companies = {
-   "T-Mobile US, Inc.": 1283699
+   
+    "AMAZON COM INC": 1018724,
+    "NVIDIA CORP": 1045810,
+    "Meta Platforms, Inc.": 1326801,
+    "BERKSHIRE HATHAWAY INC": 1067983,
+    "Tesla, Inc.": 1318605,
+    "ELI LILLY & Co": 59478,
+    "VISA INC.": 1403161,
+    "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD": 1046179,
+    "UNITEDHEALTH GROUP INC": 731766,
+    "Broadcom Inc.": 1730168,
+    "NOVO NORDISK A S": 353278,
+    "JPMORGAN CHASE & CO": 19617,
+    "Walmart Inc.": 104169,
+    "EXXON MOBIL CORP": 34088,
+    "SPDR S&P 500 ETF TRUST": 884394,
+    "Mastercard Inc": 1141391,
+    "LVMH MOET HENNESSY LOUIS VUITTON": 824046,
+    "JOHNSON & JOHNSON": 200406,
+    "PROCTER & GAMBLE Co": 80424,
+    "LATAM AIRLINES GROUP S.A.": 1047716,
+    "ORACLE CORP": 1341439,
+    "HOME DEPOT, INC.": 354950,
+    "ADOBE INC.": 796343,
+    "CHEVRON CORP": 93410,
+    "ASML HOLDING NV": 937966,
+    "COSTCO WHOLESALE CORP /NEW": 909832,
+    "Merck & Co., Inc.": 310158,
+    "COCA COLA CO": 21344,
+    "TOYOTA MOTOR CORP/": 1094517,
+    "AbbVie Inc.": 1551152,
+    "BANK OF AMERICA CORP /DE/": 70858,
+    "PEPSICO INC": 77476,
+    "MEXICAN ECONOMIC DEVELOPMENT INC": 1061736,
+    "Salesforce, Inc.": 1108524,
+    "Shell plc": 1306965,
+    "Accenture plc": 1467373,
+    "NETFLIX INC": 1065280,
+    "MCDONALDS CORP": 63908,
+    "NOVARTIS AG": 1114448,
+    "LINDE PLC": 1707925,
 
 }
 
@@ -184,12 +224,15 @@ def write_to_mysql(data, table_name, host, user, password, database):
     engine = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{database}')
     
     with engine.connect() as connection:
+        i = 0
         for index, row in df.iterrows():
+            i +=1
             try:
                 # Attempt to insert each row. If a record already exists, an IntegrityError should be raised.
                 row.to_frame().T.to_sql(name=table_name, con=connection, index=False, if_exists='append')
                 time.sleep(30)
-                send_tweet(row.to_dict())
+                if i < 40:
+                    send_tweet(row.to_dict())
                 print(f"Data written successfully to MySQL table {table_name}")
             except IntegrityError:
                 # This block is executed if the record already exists. You can log this or pass.
