@@ -1,9 +1,9 @@
 ## SEC Twitter Bot 
 
-See Twitter Account here (https://twitter.com/sectrades)
+[See Twitter Account here](https://twitter.com/sectrades)
 
 ## Preface
-Section 16 of the Securities Exchange Act of 1934 requires senior executives, directors, and 10%+ shareholders (“insiders”) to make initial and ongoing filings about their company stock holdings, including to report most of their transactions in the company’s stock. The Insider Transactions Data Sets is extracted from the eXtensible Markup Language (XML) based fillable portion of Forms 3, 4 and 5. The data is presented without change from the “as-filed” submissions and in a flattened format to provide the public with readily available data from reporting persons. See (https://www.sec.gov/dera/data/form-345)
+Section 16 of the Securities Exchange Act of 1934 requires senior executives, directors, and 10%+ shareholders (“insiders”) to make initial and ongoing filings about their company stock holdings, including to report most of their transactions in the company’s stock. The Insider Transactions Data Sets is extracted from the eXtensible Markup Language (XML) based fillable portion of Forms 3, 4 and 5. The data is presented without change from the “as-filed” submissions and in a flattened format to provide the public with readily available data from reporting persons. [See](https://www.sec.gov/dera/data/form-345)
 
 ## How it works 
 The script is running inside of an AWS EC2 Linux instance, being executed  
