@@ -9,7 +9,7 @@ from sqlalchemy import text
 import tweepy
 import re
 
-folder_count = 25
+folder_count = 5
 
 with open('utils/creds.json', 'r') as file:
     data = json.load(file)
@@ -28,7 +28,7 @@ database = data["database"]
 with open('utils/all_cik_codes.json', 'r') as file:
     companies = json.load(file)
 
-    
+
 # Define the base URL and headers
 base_url = "https://www.sec.gov/Archives/edgar/data/"
 headers = {
