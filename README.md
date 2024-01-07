@@ -13,7 +13,7 @@ Each time it executes it first scrapes all filings for a company based on its **
  
 Each CIK code has a parent directory containing every SEC filing made, including other kinds of reports. We are specifically looking for Form 4 filings which contain the insider transactions that have been disclosed. Form 4s are in XML format
 
-Every time a transaction is pulled it is converted into a dictionary and added into a dataframe that we prepare for insertion into the AWS RDS MySQL DB. If the transaction doesn't exist in the table a summary of the trade is Tweeted by the bot via the Twitter API.
+Every time a transaction is pulled it is converted into a dictionary and added into a dataframe that we prepare for insertion into the AWS RDS MySQL DB. If the transaction doesn't exist in the table a summary of the trade is Tweeted by the bot via the Twitter API and then that row is inserted into the table.
 
 # Twitter API issues 
 Currently there is a 50 requests per day limit on the Twitter API under the free tier. With premium access this bot could be making tweets all day.

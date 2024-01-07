@@ -11,7 +11,7 @@ import re
 
 folder_count = 25
 
-with open('creds.json', 'r') as file:
+with open('utils/creds.json', 'r') as file:
     data = json.load(file)
 
 consumer_key = data["consumer_key"]
