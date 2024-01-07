@@ -25,51 +25,10 @@ password = data["dbpass"]
 database = data["database"]
 
 # Define the company CIK codes
-companies = {
-   
-    "AMAZON COM INC": 1018724,
-    "NVIDIA CORP": 1045810,
-    "Meta Platforms, Inc.": 1326801,
-    "BERKSHIRE HATHAWAY INC": 1067983,
-    "Tesla, Inc.": 1318605,
-    "ELI LILLY & Co": 59478,
-    "VISA INC.": 1403161,
-    "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD": 1046179,
-    "UNITEDHEALTH GROUP INC": 731766,
-    "Broadcom Inc.": 1730168,
-    "NOVO NORDISK A S": 353278,
-    "JPMORGAN CHASE & CO": 19617,
-    "Walmart Inc.": 104169,
-    "EXXON MOBIL CORP": 34088,
-    "SPDR S&P 500 ETF TRUST": 884394,
-    "Mastercard Inc": 1141391,
-    "LVMH MOET HENNESSY LOUIS VUITTON": 824046,
-    "JOHNSON & JOHNSON": 200406,
-    "PROCTER & GAMBLE Co": 80424,
-    "LATAM AIRLINES GROUP S.A.": 1047716,
-    "ORACLE CORP": 1341439,
-    "HOME DEPOT, INC.": 354950,
-    "ADOBE INC.": 796343,
-    "CHEVRON CORP": 93410,
-    "ASML HOLDING NV": 937966,
-    "COSTCO WHOLESALE CORP /NEW": 909832,
-    "Merck & Co., Inc.": 310158,
-    "COCA COLA CO": 21344,
-    "TOYOTA MOTOR CORP/": 1094517,
-    "AbbVie Inc.": 1551152,
-    "BANK OF AMERICA CORP /DE/": 70858,
-    "PEPSICO INC": 77476,
-    "MEXICAN ECONOMIC DEVELOPMENT INC": 1061736,
-    "Salesforce, Inc.": 1108524,
-    "Shell plc": 1306965,
-    "Accenture plc": 1467373,
-    "NETFLIX INC": 1065280,
-    "MCDONALDS CORP": 63908,
-    "NOVARTIS AG": 1114448,
-    "LINDE PLC": 1707925,
+with open('utils/all_cik_codes.json', 'r') as file:
+    companies = json.load(file)
 
-}
-
+    
 # Define the base URL and headers
 base_url = "https://www.sec.gov/Archives/edgar/data/"
 headers = {
